@@ -1,7 +1,3 @@
-# Weather Data Integration Project
-
-This project integrates Python with an R script to fetch weather data for a specified city using environment variables.
-
 ## Pré Requisitos
 
 - Python 3.x
