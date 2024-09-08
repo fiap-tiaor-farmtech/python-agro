@@ -15,9 +15,8 @@
    ```sh
     pip install pip install geopy
     ```
-5. Certifique que todos os programas estão dentro do mesmo diretório
-   calculo_geo.py
-   app.py
+5. Certifique que todos os programas estão dentro do mesmo diretório: 
+   calculo_geo.py e app.py
 6. Executar o programa app.py
    ```sh
     python app.py
