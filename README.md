@@ -3,7 +3,7 @@
 - Python 3.x
 - Biblioteca geopy
 
-## Installation
+## Passo a passo
 
 1. Ir no prompt de comando ou em editor de código
 2. Navegue até o diretório onde estão os programas 
@@ -11,21 +11,17 @@
     ```sh
     pip install -r requirements.txt
     ```
-
 4. Ou pode instalar direto a biblioteca:
    ```sh
     pip install pip install geopy
     ```
-
 5. Certifique que todos os programas estão dentro do mesmo diretório
    calculo_geo.py
    app.py
-   
 6. Executar o programa app.py
    ```sh
     python app.py
     ```
-
 7. Vai aparecer a seguinte tela (aí é só explorar o programa!)
       ```sh
     --- Menu de Opções ---
