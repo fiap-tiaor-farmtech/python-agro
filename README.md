@@ -31,5 +31,6 @@
     5. Sair do Programa
     Escolha uma opção (1-5): 
     ```
+8. O programa calculo_geo.py utiliza a biblioteca geopy, especificamente a classe Nominatim, para realizar a geocodificação, ou seja, a conversão de um endereço (composto por rua, número, cidade e estado) em coordenadas geográficas (latitude e longitude)
 
 
