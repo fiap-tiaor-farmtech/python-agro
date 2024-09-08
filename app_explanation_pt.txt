@@ -1,0 +1,127 @@
+### Linhas 1-2: Importações
+from calculo_geo import obter_geolocalizacao
+import csv
+
+- **from calculo_geo import obter_geolocalizacao**: Importa a função obter_geolocalizacao de um arquivo chamado calculo_geo. Essa função provavelmente é usada para obter a geolocalização (latitude e longitude) de um local.
+- **import csv**: Importa a biblioteca csv, que é usada para trabalhar com arquivos CSV, como leitura e gravação de dados em formato separado por vírgula ou outros delimitadores.
+
+### Linhas 4-8: Vetores e Variáveis Iniciais
+culturas = ["milho", "soja"]  # culturas
+figura_geometrica = "retangulo"  # forma geométrica
+espacamento = 0.75  # espaçamento fixo entre fileiras (metros)
+quantidade_por_metro = 500  # quantidade de insumo por metro quadrado (mL)
+
+- **culturas**: Uma lista contendo as culturas que serão usadas (milho e soja).
+- **figura_geometrica**: Define a forma geométrica do campo (neste caso, retângulo).
+- **espacamento**: Define o espaçamento entre fileiras, fixado em 0,75 metros.
+- **quantidade_por_metro**: Define a quantidade de insumos (fertilizantes, água, etc.) aplicada por metro quadrado, em mililitros.
+
+### Linhas 10-18: Dicionários de Produtos
+produto_milho = {{
+    "nome": "fosfato",
+    "quantidade_por_hectare": 100  # quantidade por hectare(kg)
+}}
+produto_soja = {{
+    "nome": "fosfato",
+    "quantidade_por_hectare": 60  # quantidade por hectare(kg)
+}}
+
+- **produto_milho** e **produto_soja**: Dicionários que armazenam informações sobre os produtos aplicados em cada tipo de cultura. Aqui, ambos recebem fosfato, mas em diferentes quantidades (100 kg/hectare para milho e 60 kg/hectare para soja).
+
+### Linhas 20-23: Função dados_inseridos
+def dados_inseridos():
+    global largura_terreno, comprimento_terreno
+    return largura_terreno is not None and comprimento_terreno is not None
+
+- **dados_inseridos**: Função que verifica se os dados essenciais, como a largura e o comprimento do terreno, foram inseridos. Se essas variáveis forem None, significa que os dados ainda não foram fornecidos.
+
+### Linhas 25-56: Função saida_dados
+def saida_dados():
+    global culturas, figura_geometrica, largura_terreno, comprimento_terreno, quantidade_por_metro, latitude, longitude, espacamento, area_total, numero_de_fileiras, volume_por_fileira, volume_total
+
+    if not dados_inseridos():
+        print("Erro: Nenhum dado foi inserido ainda. Por favor, insira os dados primeiro.")
+        return
+    
+    area_total = largura_terreno * comprimento_terreno
+    
+    if espacamento > 0:
+        numero_de_fileiras = largura_terreno / espacamento
+        volume_por_fileira = (quantidade_por_metro / 1000) * comprimento_terreno  # convertendo mL para litros
+        volume_total = numero_de_fileiras * volume_por_fileira
+    else:
+        numero_de_fileiras = 0
+        volume_total = 0
+
+    # Exibe os dados calculados
+    print(f"Área total: {area_total} m²")
+    print(f"Volume total aplicado: {volume_total:.2f} litros")
+    
+    with open("saida.csv", "w", newline="") as arquivo_csv:
+        writer = csv.writer(arquivo_csv, delimiter=";")
+        writer.writerow(["Área total (m²)", "Volume total aplicado (litros)"])
+        writer.writerow([area_total, volume_total])
+    print("Dados salvos em 'saida.csv'.")
+
+- **saida_dados**: Essa função verifica se os dados foram inseridos corretamente e, se sim, realiza cálculos como a área total do terreno e o volume de insumos aplicados. Ela também grava os resultados em um arquivo CSV.
+- **area_total**: Calcula a área total do terreno multiplicando a largura pelo comprimento.
+- **numero_de_fileiras**: Calcula o número de fileiras possíveis no terreno com base no espaçamento fornecido.
+- **volume_por_fileira**: Calcula o volume de insumo aplicado por fileira.
+- **volume_total**: Multiplica o volume por fileira pelo número de fileiras para obter o total de insumos necessários.
+- **Gravação em CSV**: Usa o módulo csv para gravar os resultados dos cálculos em um arquivo chamado 'saida.csv', usando ';' como delimitador.
+
+### Linhas 58-92: Função entrada_dados
+def entrada_dados():
+    global largura_terreno, comprimento_terreno, latitude, longitude
+    
+    largura_terreno = float(input("Insira a largura do terreno (em metros): "))
+    comprimento_terreno = float(input("Insira o comprimento do terreno (em metros): "))
+    
+    latitude, longitude = obter_geolocalizacao()
+    
+    print(f"Geolocalização obtida: Latitude = {{latitude}}, Longitude = {{longitude}}")
+    print("Dados inseridos com sucesso!")
+
+- **entrada_dados**: Esta função coleta os dados essenciais para os cálculos, como a largura e o comprimento do terreno. Também obtém a geolocalização usando a função `obter_geolocalizacao` importada no início do código.
+
+### Linhas 94-152: Funções atualizar_dados e deletar_dados
+Essas funções permitem ao usuário atualizar ou deletar os dados previamente inseridos.
+
+def atualizar_dados():
+    pass  # ainda a ser implementado
+def deletar_dados():
+    pass  # ainda a ser implementado
+
+- **atualizar_dados**: Função para atualizar dados já inseridos, ainda a ser implementada.
+- **deletar_dados**: Função para deletar dados, ainda a ser implementada.
+
+### Linhas 154-172: Função Principal menu
+def menu():
+    while True:
+        print("\n--- Menu de Opções ---")
+        print("1. Entrada de Dados")
+        print("2. Saída de Dados")
+        print("3. Atualizar Dados")
+        print("4. Deletar Dados")
+        print("5. Sair do Programa")
+        
+        opcao = input("Escolha uma opção (1-5): ")
+        
+        if opcao == "1":
+            entrada_dados()
+        elif opcao == "2":
+            saida_dados()
+        elif opcao == "3":
+            atualizar_dados()
+        elif opcao == "4":
+            deletar_dados()
+        elif opcao == "5":
+            print("Saindo do programa...")
+            break
+        else:
+            print("Opção inválida! Tente novamente.")
+
+- **menu**: Apresenta um menu de opções ao usuário. Dependendo da escolha, ele chama as funções `entrada_dados`, `saida_dados`, `atualizar_dados` ou `deletar_dados`. A opção "5" encerra o programa.
+
+### Fim
+As variáveis globais **largura_terreno**, **comprimento_terreno**, **latitude** e **longitude** são declaradas como None no final do código e a função menu é chamada para iniciar a interação com o usuário.
