@@ -2,67 +2,39 @@
 
 This project integrates Python with an R script to fetch weather data for a specified city using environment variables.
 
-## Prerequisites
+## Pré Requisitos
 
 - Python 3.x
-- R
-- `rpy2` library
-- `python-dotenv` library
-- `weather.R` script
-- OpenWeatherMap API key
+- Biblioteca geopy
 
 ## Installation
 
-1. Clone the repository:
+1. Ir no prompt de comando ou em editor de código
+2. Navegue até o diretório onde estão os programas 
+3. Instalar a biblioteca geopy:
     ```sh
-    git clone https://github.com/fiap-tiaor-farmtech/weatheR-module.git
-    cd weatheR-module
+    pip install -r requirements.txt
+    ```
+    ```
+4. Ou pode instalar direto a biblioteca:
+   ```sh
+    pip install pip install geopy
+    ```
+    ```
+5. Certifique que todos os programas estão dentro do mesmo diretório
+   calculo_geo.py
+   app.py
+   
+6. Executar o programa app.py
+7. Vai aparecer a seguinte tela (aí é só explorar o programa!)
+      ```sh
+    --- Menu de Opções ---
+    1. Entrada de Dados
+    2. Saída de Dados
+    3. Atualizar Dados
+    4. Deletar Dados
+    5. Sair do Programa
+    Escolha uma opção (1-5): 
+    ```
     ```
 
-2. Install the required Python libraries:
-    ```sh
-    pip install requirements.txt
-    ```
-
-3. Ensure R is installed on your system and accessible from the command line.
-
-4. Create a `.env` file in the root directory of the project and add R_HOME environment variable:
-    ```sh
-    R_HOME=<path-to-R-installation>
-    API_KEY=<your-openweathermap-api-key>
-    ```
-
-## Usage
-
-1. Ensure the `weather.R` script is in the same directory as `weather.py`.
-
-2. Run the Python script:
-    ```sh
-    python weather.py
-    ```
-
-## Example
-
-When you run the script, it will print the weather data for "Sao Paulo, BR" as fetched by the R script.
-
-## Code
-
-```python
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-import rpy2.robjects as robjects
-
-# Defining the R script and loading the instance in Python
-r = robjects.r
-r'source'
-
-# Loading the function we have defined in R.
-weather_function_r = robjects.globalenv['weather_city']
-
-# Invoking the R function and getting the result
-df_result_r = weather_function_r('Sao Paulo,BR')
-
-print(df_result_r)
