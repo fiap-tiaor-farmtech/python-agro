@@ -16,8 +16,8 @@
     pip install pip install geopy
     ```
 5. Certifique que todos os programas estão dentro do mesmo diretório: 
-   calculo_geo.py e app.py
-6. Executar o programa app.py
+   `calculo_geo.py` e `app.py`
+6. Executar o programa `app.py`
    ```sh
     python app.py
     ```
@@ -31,6 +31,6 @@
     5. Sair do Programa
     Escolha uma opção (1-5): 
     ```
-8. O programa calculo_geo.py utiliza a biblioteca geopy, especificamente a classe Nominatim, para realizar a geocodificação, ou seja, a conversão de um endereço (composto por rua, número, cidade e estado) em coordenadas geográficas (latitude e longitude)
+8. O programa `calculo_geo.py` utiliza a biblioteca geopy, especificamente a classe Nominatim, para realizar a geocodificação, ou seja, a conversão de um endereço (composto por rua, número, cidade e estado) em coordenadas geográficas (latitude e longitude)
 
 
