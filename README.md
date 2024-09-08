@@ -15,17 +15,21 @@ This project integrates Python with an R script to fetch weather data for a spec
     ```sh
     pip install -r requirements.txt
     ```
-    ```
+
 4. Ou pode instalar direto a biblioteca:
    ```sh
     pip install pip install geopy
     ```
-    ```
+
 5. Certifique que todos os programas estão dentro do mesmo diretório
    calculo_geo.py
    app.py
    
 6. Executar o programa app.py
+   ```sh
+    python app.py
+    ```
+
 7. Vai aparecer a seguinte tela (aí é só explorar o programa!)
       ```sh
     --- Menu de Opções ---
@@ -36,5 +40,5 @@ This project integrates Python with an R script to fetch weather data for a spec
     5. Sair do Programa
     Escolha uma opção (1-5): 
     ```
-    ```
+
 
